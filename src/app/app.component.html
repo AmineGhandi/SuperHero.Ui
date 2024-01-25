@@ -1,3 +1,6 @@
+
+<button (click)="initNewHero()">Create New Hero</button>
+
 <table>
   <thead>
     <tr>
@@ -14,7 +17,9 @@
       <td>{{ hero.firstName }}</td>
       <td>{{ hero.lastName }}</td>
       <td>{{ hero.origin }}</td>
+      <td><button (click)="editHero(hero)">Edit</button></td>
     </tr>
   </tbody>
 </table>
 
+<app-edit-hero [hero]="heroToEdit" (heroesUpdated)="updateHeroList($event)"></app-edit-hero>
