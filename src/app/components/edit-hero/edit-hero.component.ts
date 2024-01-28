@@ -5,7 +5,7 @@ import { SuperHeroService } from '../../services/super-hero.service';
 @Component({
   selector: 'app-edit-hero',
   templateUrl: './edit-hero.component.html',
-  styleUrl: './edit-hero.component.css'
+  styleUrl: './edit-hero.component.css',
 })
 export class EditHeroComponent implements OnInit{
 @Input() hero?: SuperHero;
@@ -20,7 +20,9 @@ ngOnInit(): void {
 updateHero(hero:SuperHero){
   this.superHeroService
   .updateHero(hero)
-  .subscribe((heroes: SuperHero[]) => this.heroesUpdated.emit(heroes))
+  .subscribe((heroes: SuperHero[]) => this.heroesUpdated.emit(heroes));
+  
+  this.hero = undefined;
 }
 
 deleteHero(hero:SuperHero){
@@ -32,7 +34,11 @@ deleteHero(hero:SuperHero){
 createHero(hero:SuperHero){
   this.superHeroService
   .createHero(hero)
-  .subscribe((heroes: SuperHero[]) => this.heroesUpdated.emit(heroes))
-}
+  .subscribe((heroes: SuperHero[]) => this.heroesUpdated.emit(heroes));
 
+  this.hero = undefined;
+}
+cancelHero(hero:SuperHero){
+  this.hero = undefined;
+}
 }
